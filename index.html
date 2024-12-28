@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yoruba Chatbot</title>
+    <title>Chatbot Platform</title>
     <style>
         /* Chat Interface Styling */
         #chat-container {
@@ -42,7 +42,7 @@
     </div>
 <script>
     function sendMessage() {
-        const userInput = document.getElementById('user-input').value.trim();
+        const userInput = document.getElementById('user-input').value.trim().toLowerCase();
         const messages = document.getElementById('messages');
 
         // Check if the input is empty
@@ -58,33 +58,26 @@
 
         // Generate a bot response based on user input
         const botMessage = document.createElement('div');
-        let response = '';
+        let response;
 
-        // Yoruba slang responses
-        if (userInput.toLowerCase() === 'hi' || userInput.toLowerCase() === 'hello') {
+        // Yoruba slang responses and common phrases
+        if (userInput === 'hi' || userInput === 'hello') {
             response = 'Bot: Ẹ ku lẹ́! (Hello!)';
-        } else if (userInput.toLowerCase().includes('bawo')) {
+        } else if (userInput.includes('bawo') || userInput.includes('how are you')) {
             response = 'Bot: Mo wa daadaa o, ẹ ṣeun! (I am fine, thank you!)';
-        } else if (userInput.toLowerCase().includes('ṣé aláfíà ni?')) {
+        } else if (userInput.includes('ṣé aláfíà ni?')) {
             response = 'Bot: Bẹ́ẹ̀ ni, mo wa ní àlàáfíà. (Yes, I am well.)';
-        } else if (userInput.toLowerCase().includes('kilode') || userInput.toLowerCase().includes('wetin')) {
+        } else if (userInput.includes('kilode') || userInput.includes('wetin')) {
             response = 'Bot: Kò sí ohun tó ṣẹlẹ̀! (Nothing happened!)';
-        } else if (userInput.toLowerCase().includes('omo') || userInput.toLowerCase().includes('owó')) {
+        } else if (userInput.includes('omo') || userInput.includes('owó')) {
             response = 'Bot: Ẹ ṣọra o, owó kò lè fẹsẹ̀ rin! (Be careful, money doesn’t walk!)';
-        } else if (userInput.toLowerCase().includes('sha') || userInput.toLowerCase().includes('abeg')) {
+        } else if (userInput.includes('sha') || userInput.includes('abeg')) {
             response = 'Bot: Ṣé o n bẹ̀rẹ̀? (Are you pleading?)';
-        } else if (userInput.toLowerCase().includes('japa')) {
-            response = 'Bot: Ṣé o fẹ japa lọ sí òkèèrè? (Do you want to escape abroad?)';
-        } else if (userInput.toLowerCase().includes('pele') || userInput.toLowerCase().includes('sorry')) {
-            response = 'Bot: Ẹ ṣàánú mi, àlàáfíà ni gbogbo nnkan wa. (Thank you, everything is fine.)';
-        } else if (userInput.toLowerCase().includes('ehen') || userInput.toLowerCase().includes('abi')) {
-            response = 'Bot: Bẹ́ẹ̀ ni, o rí i dáadáa! (Yes, you’re absolutely correct!)';
-        } else if (userInput.toLowerCase().includes('yawa') || userInput.toLowerCase().includes('problem')) {
-            response = 'Bot: Ọmọ! Ṣọra o, kò sí ìṣòro. (Be careful, no problem!)';
         } else {
             response = 'Bot: Ṣe o le ṣàlàyé sí mi? (Can you explain that to me?)';
         }
 
+        // Display the bot response
         botMessage.textContent = response;
         messages.appendChild(botMessage);
 
